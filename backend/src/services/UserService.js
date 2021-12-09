@@ -31,7 +31,7 @@ export default {
         
     },
     login: async (email, password) => {
-        let user = await User.findOne({email, password: md5(password)});
+        let user = await User.findOne({email, password: md5(password), role: "admin"});
         if (user) {
             let token = await Token.createToken(user);
             return Promise.resolve({
