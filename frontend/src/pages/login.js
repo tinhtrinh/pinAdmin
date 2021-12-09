@@ -7,6 +7,7 @@ import { authService } from "../services/auth.service";
 const LogIn = () => {
     const history=useHistory();
     const { register, handleSubmit } = useForm();
+    const [errMessage, setErrMessage] = React.useState('');
 
     const onSubmit = async (data) => {
         await authService
@@ -16,12 +17,13 @@ const LogIn = () => {
             history.push('/home');
         })
         .catch((err) => {
-          console.log(err)
+          setErrMessage(err.message);
         });
     }
     return (
         <div>
             <h2>Login</h2>
+            <h3>{errMessage}</h3>
             <input placeholder="Tên đăng nhập" {...register('email')}/>
             <input placeholder="Mật khẩu" {...register('password')}/>
             <button onClick={handleSubmit(onSubmit)}>Đăng nhập</button>
