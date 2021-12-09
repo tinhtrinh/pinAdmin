@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useHistory } from 'react-router';
 import { useForm } from "react-hook-form";
 
@@ -22,6 +23,7 @@ const LogIn = () => {
     }
     return (
         <div>
+            <Link to="/home">Home</Link>
             <h2>Login</h2>
             <h3>{errMessage}</h3>
             <input placeholder="Tên đăng nhập" {...register('email')}/>
