@@ -36,33 +36,35 @@ const LogIn = () => {
             <Link to={"/"} className="navbar-brand">Admin</Link>
             </div>
         </nav>
-        <form>
-            <h3>Sign In</h3>
+        <div className="auth-inner">
+            <form>
+                <h3>Sign In</h3>
 
-            <div className="form-group" style={{marginBottom: '20px'}}>
-                <label>Email address</label>
-                <input type="email" className="form-control" placeholder="Enter email" {...register('email')}/>
-            </div>
-
-            <div className="form-group" style={{marginBottom: '20px'}}>
-                <label>Password</label>
-                <input type="password" className="form-control" placeholder="Enter password" {...register('password')}/>
-            </div>
-
-            <h6 style={{color: "red"}}>{errMessage}</h6>
-
-            <div className="form-group" style={{marginBottom: '20px'}}>
-                <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                    <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
+                <div className="form-group" style={{marginBottom: '20px'}}>
+                    <label>Email address</label>
+                    <input type="email" className="form-control" placeholder="Enter email" {...register('email')}/>
                 </div>
-            </div>
 
-            <button id="subtn" type="submit" className="btn btn-primary btn-block" onClick={handleSubmit(onSubmit)}>Submit</button>
-            <p className="forgot-password text-right">
-                Forgot <a href="#">password?</a>
-            </p>
-        </form>
+                <div className="form-group" style={{marginBottom: '20px'}}>
+                    <label>Password</label>
+                    <input type="password" className="form-control" placeholder="Enter password" {...register('password')}/>
+                </div>
+
+                <h6 style={{color: "red"}}>{errMessage}</h6>
+
+                <div className="form-group" style={{marginBottom: '20px'}}>
+                    <div className="custom-control custom-checkbox">
+                        <input type="checkbox" className="custom-control-input" id="customCheck1" />
+                        <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
+                    </div>
+                </div>
+
+                <button id="subtn" type="submit" className="btn btn-primary btn-block" onClick={handleSubmit(onSubmit)}>Submit</button>
+                <p className="forgot-password text-right">
+                    Forgot <a href="#">password?</a>
+                </p>
+            </form>
+        </div>
         </>
     );
 }

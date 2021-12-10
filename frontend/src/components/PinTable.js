@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { fileService }  from '../services/file.service';
-
+import {Table} from 'react-bootstrap';
 const PinTable = () => {
     const [pins, setPins] = useState([]);
     let [videoOfDatabase, setVideoOfDatabase] = useState([]);
@@ -42,13 +42,16 @@ const PinTable = () => {
     }
 
     return (
-        <table>
-            <tr>
+        <div style={{display:"flex", justifyContent: "center"}}>
+        <Table style={{width: '80%'}}  striped bordered hover variant="dark">
+            <thead>
+                <tr>
                 <th>Ảnh</th>
                 <th>Nội dung</th>
                 <th>Hành động</th>
-            </tr>
-
+                </tr>
+            </thead>
+            <tbody>
             {pins.map((pin, index) => {
                 return (
                     <tr key={index}>
@@ -57,7 +60,7 @@ const PinTable = () => {
                         </td>
                         <td>{pin.status}</td>
                         <td>
-                            <button onClick={() => HandleFileDelete(pin)}>Xóa</button>
+                            <button className="btn btn-danger" onClick={() => HandleFileDelete(pin)}>Xóa</button>
                         </td>
                     </tr>
                 )
@@ -86,7 +89,9 @@ const PinTable = () => {
                     </tr>
                 )
             })}
-        </table>
+            </tbody>
+        </Table>
+        </div>
     );
 }
 

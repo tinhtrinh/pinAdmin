@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { adminService } from "../services/admin.service";
+import {Table} from 'react-bootstrap';
 
 const CommentTable = () => {
     const [comments, setComments] = useState([]);
@@ -24,13 +25,16 @@ const CommentTable = () => {
     }
 
     return (
-        <table>
-            <tr>
+        <div style={{display:"flex", justifyContent: "center"}}>
+        <Table style={{width: '80%'}}  striped bordered hover variant="dark">
+            <thead>
+                <tr>
                 <th>Ảnh đại diện</th>
                 <th>Bình luận</th>
                 <th>Hành động</th>
-            </tr>
-
+                </tr>
+            </thead>
+            <tbody>
             {comments.map((comment, index) => {
                 return (
                     <tr key={index}>
@@ -39,12 +43,14 @@ const CommentTable = () => {
                         </td>
                         <td>{comment.content}</td>
                         <td>
-                            <button onClick={() => HandleCommentDelete(comment)}>Xóa</button>
+                            <button className="btn btn-danger" onClick={() => HandleCommentDelete(comment)}>Xóa</button>
                         </td>
                     </tr>
                 )
             })}
-        </table>
+            </tbody>
+        </Table>
+        </div>
     );
 }
 

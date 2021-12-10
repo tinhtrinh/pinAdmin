@@ -19,31 +19,28 @@ const Home = () => {
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-                <div className="container">
-                <Link className="navbar-brand" to={"/home"}>Admin</Link>
-                <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul className="navbar-nav ml-auto">
-                    <li className="nav-item">
-                        <Link className="nav-link" to={"/"}>Logout</Link>
-                    </li>
-                    </ul>
-                </div>
-                    <Navbar bg="light" variant="light">
-                        <Container>
-                        <Nav className="me-auto">
-                        <Nav.Link onClick={() => setOpen(true, false, false)} href="#home">Quản lý người dùng</Nav.Link>
-                        <Nav.Link onClick={() => setOpen(false, true, false)} href="#features">Quản lý bài đăng</Nav.Link>
-                        <Nav.Link onClick={() => setOpen(false, false, true)} href="#pricing">Quản lý bình luận</Nav.Link>
-                        </Nav>
-                        </Container>
-                    </Navbar>
-                </div>
-            </nav>
-
+            <Navbar bg="light" variant="light" className="fixed-top">
+                <Container>
+                    <Link className="navbar-brand" to={"/home"}>Admin</Link>
+                    <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul className="navbar-nav ml-auto">
+                        <li className="nav-item">
+                            <Link className="nav-link" to={"/"}>Logout</Link>
+                        </li>
+                        </ul>
+                    </div>
+                    <Nav className="me-auto">
+                    <Nav.Link onClick={() => setOpen(true, false, false)} href="#user">Quản lý người dùng</Nav.Link>
+                    <Nav.Link onClick={() => setOpen(false, true, false)} href="#post">Quản lý bài đăng</Nav.Link>
+                    <Nav.Link onClick={() => setOpen(false, false, true)} href="#comment">Quản lý bình luận</Nav.Link>
+                    </Nav>
+                </Container>
+            </Navbar>
+               
             {isPinTableOpen ? <PinTable/> : ""}
             {isUserTableOpen ? <UserTable/> : ""}
             {isCommentTableOpen? <CommentTable/>: ""}
+            <h2 style={{color: "white", marginTop: '150px'}}>Vui lòng chọn tính năng!</h2>
         </div>
     );
 }

@@ -8,14 +8,12 @@ import Login from "./pages/login";
 function App() {
   return (<Router>
     <div className="App">
-      <div className="auth-wrapper">
-        <div className="auth-inner">
+      <div>
           <Switch>
             <Route exact path='/' component={Login} />
             <Route path="/sign-in" component={Login} />
             <Route path="/home" component={Home} />
           </Switch>
-        </div>
       </div>
     </div></Router>
   );

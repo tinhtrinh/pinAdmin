@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { adminService } from "../services/admin.service";
+import {Table} from 'react-bootstrap';
 
 const UserTable = () => {
     const [users, setUsers] = useState([]);
@@ -24,29 +25,34 @@ const UserTable = () => {
     }
 
     return (
-        <table>
-            <tr>
+        <div style={{display:"flex", justifyContent: "center"}}>
+        <Table style={{width: '80%'}}  striped bordered hover variant="dark">
+            <thead>
+                <tr>
                 <th>Ảnh đại diện</th>
                 <th>Email</th>
                 <th>Hành động</th>
-            </tr>
+                </tr>
+            </thead>
+            <tbody>
+                {users.map((user, index) => {
+                 if(user.role === "admin") return "";
 
-            {users.map((user, index) => {
-                if(user.role === "admin") return "";
-
-                return (
-                    <tr key={index}>
-                        <td>
+                 return (
+                     <tr key={index}>
+                         <td>
                             <img src={user.profilePhoto} style={{width: 100}}/>
-                        </td>
-                        <td>{user.email}</td>
-                        <td>
-                            <button onClick={() => HandleUserDelete(user)}>Xóa</button>
-                        </td>
+                         </td>
+                         <td>{user.email}</td>
+                         <td>
+                             <button type="button" class="btn btn-danger" onClick={() => HandleUserDelete(user)}>Xóa</button>
+                         </td>
                     </tr>
-                )
-            })}
-        </table>
+                  )
+                })}
+            </tbody>
+        </Table>
+        </div>
     );
 }
 
