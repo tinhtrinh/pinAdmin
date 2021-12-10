@@ -11,6 +11,17 @@ const UserTable = () => {
         })
         .catch(err => console.log("ERROR: ", err.message))
        }, []);
+    
+    const HandleUserDelete = (user) => {
+        var newUsers = [...users];
+        var index = newUsers.indexOf(user);
+        newUsers.splice(index, 1);
+        setUsers(newUsers);
+        //api ở đây comment lại để tránh hậu quả đáng tiếc =>
+        adminService.deleteUserById(user._id)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    }
 
     return (
         <table>
@@ -30,7 +41,7 @@ const UserTable = () => {
                         </td>
                         <td>{user.email}</td>
                         <td>
-                            <button>Xóa</button>
+                            <button onClick={() => HandleUserDelete(user)}>Xóa</button>
                         </td>
                     </tr>
                 )

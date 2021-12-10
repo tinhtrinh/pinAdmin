@@ -18,9 +18,9 @@ const CommentTable = () => {
         newComments.splice(index, 1);
         setComments(newComments);
         // api ở đây comment lại để tránh hậu quả đáng tiếc =>
-        adminService.deleteCommentById(comment._id)
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+        // adminService.deleteCommentById(comment._id)
+        // .then(res => console.log(res))
+        // .catch(err => console.log(err));
     }
 
     return (
