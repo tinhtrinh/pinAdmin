@@ -25,10 +25,17 @@ const LogIn = () => {
         })
         .catch((err) => {
           setErrMessage(err.message);
+          submitBtn.classList.remove("disabled");
         });
     }
     
     return (
+        <>
+        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+            <div className="container">
+            <Link to={"/"} className="navbar-brand">Admin</Link>
+            </div>
+        </nav>
         <form>
             <h3>Sign In</h3>
 
@@ -56,6 +63,7 @@ const LogIn = () => {
                 Forgot <a href="#">password?</a>
             </p>
         </form>
+        </>
     );
 }
 

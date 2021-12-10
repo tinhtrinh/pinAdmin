@@ -1,9 +1,10 @@
 .App {
   text-align: center;
 }
-/* .container {
-  height: 100%
-} */
+.container {
+  display: flex;
+  justify-content: space-between;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
