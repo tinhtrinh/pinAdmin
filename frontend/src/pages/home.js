@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import PinTable from "../components/PinTable";
 import UserTable from "../components/UserTable";
+import CommentTable from "../components/CommentTable";
 
 const Home = () => {
     const [isUserTableOpen, setIsUserTableOpen] = useState(false);
@@ -26,6 +27,7 @@ const Home = () => {
 
             {isPinTableOpen ? <PinTable/> : ""}
             {isUserTableOpen ? <UserTable/> : ""}
+            {isCommentTableOpen? <CommentTable/>: ""}
         </div>
     );
 }
