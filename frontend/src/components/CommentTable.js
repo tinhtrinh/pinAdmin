@@ -4,6 +4,14 @@ import { adminService } from "../services/admin.service";
 const CommentTable = () => {
     const [comments, setComments] = useState([]);
 
+    useEffect(() => {
+        adminService.getAllComment()
+        .then(res => {
+            setComments(res)
+        })
+        .catch(err => console.log("ERROR: ", err.message))
+       }, []);
+
     return (
         <table>
             <tr>
@@ -16,7 +24,7 @@ const CommentTable = () => {
                 return (
                     <tr key={index}>
                         <td>
-                            <img src={comment.profilePhoto} style={{width: 100}}/>
+                            <img src={comment.linkAvatar} style={{width: 100}}/>
                         </td>
                         <td>{comment.content}</td>
                         <td>

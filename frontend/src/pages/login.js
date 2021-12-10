@@ -21,29 +21,22 @@ const LogIn = () => {
           setErrMessage(err.message);
         });
     }
-    // return (
-    //     <div>
-    //         <Link to="/home">Home</Link>
-    //         <h2>Login</h2>
-    //         <h3>{errMessage}</h3>
-    //         <input placeholder="Tên đăng nhập" {...register('email')}/>
-    //         <input placeholder="Mật khẩu" {...register('password')}/>
-    //         <button onClick={handleSubmit(onSubmit)}>Đăng nhập</button>
-    //     </div>
-    // );
+    
     return (
         <form>
             <h3>Sign In</h3>
 
             <div className="form-group" style={{marginBottom: '20px'}}>
                 <label>Email address</label>
-                <input type="email" className="form-control" placeholder="Enter email" />
+                <input type="email" className="form-control" placeholder="Enter email" {...register('email')}/>
             </div>
 
             <div className="form-group" style={{marginBottom: '20px'}}>
                 <label>Password</label>
-                <input type="password" className="form-control" placeholder="Enter password" />
+                <input type="password" className="form-control" placeholder="Enter password" {...register('password')}/>
             </div>
+
+            <h6 style={{color: "red"}}>{errMessage}</h6>
 
             <div className="form-group" style={{marginBottom: '20px'}}>
                 <div className="custom-control custom-checkbox">
@@ -52,7 +45,7 @@ const LogIn = () => {
                 </div>
             </div>
 
-            <button type="submit" className="btn btn-primary btn-block">Submit</button>
+            <button type="submit" className="btn btn-primary btn-block" onClick={handleSubmit(onSubmit)}>Submit</button>
             <p className="forgot-password text-right">
                 Forgot <a href="#">password?</a>
             </p>
