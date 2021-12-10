@@ -14,6 +14,18 @@ export default {
       });
   },
 
+  deleteUserById: async (req, res, next) => {
+    let { userId } = req.params;
+    adminService.deleteUserById(userId)
+    .then((result) => {
+      return res.status(200).json();
+    })
+    .catch(error => {
+      Log.error('AdminService', error.message, error);
+      return res.status(error.code).json(error);
+    })
+  },
+
   getAllComment: async (req, res, next) => {
     adminService
       .getAllComment()

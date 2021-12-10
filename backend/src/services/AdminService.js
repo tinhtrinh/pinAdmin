@@ -16,13 +16,13 @@ export default {
     );
   },
 
-  deleteUser: async () => {
-    return User.findOne({_id: fileId})
+  deleteUserById: async (userId) => {
+    return User.findOne({_id: userId})
             .then(async (user) => {
                 if(!user)
                     return Promise.reject(new ServiceError(400, "User not existed!"));
-                const dele = await User.deleteOne({_id: fileId});
-                return Promise.resolve(file.link.split("=")[1]);
+                const dele = await User.deleteOne({_id: userId});
+                //return Promise.resolve(file.link.split("=")[1]);
             }, async (error) => {
                 return Promise.reject(new ServiceError(500, error.message, error));
             });
