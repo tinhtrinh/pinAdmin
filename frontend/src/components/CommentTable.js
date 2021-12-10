@@ -12,6 +12,17 @@ const CommentTable = () => {
         .catch(err => console.log("ERROR: ", err.message))
        }, []);
 
+    const HandleCommentDelete = (comment) => {
+        var newComments = [...comments];
+        var index = newComments.indexOf(comment);
+        newComments.splice(index, 1);
+        setComments(newComments);
+        // api ở đây comment lại để tránh hậu quả đáng tiếc =>
+        adminService.deleteCommentById(comment._id)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    }
+
     return (
         <table>
             <tr>
@@ -28,7 +39,7 @@ const CommentTable = () => {
                         </td>
                         <td>{comment.content}</td>
                         <td>
-                            <button>Xóa</button>
+                            <button onClick={() => HandleCommentDelete(comment)}>Xóa</button>
                         </td>
                     </tr>
                 )

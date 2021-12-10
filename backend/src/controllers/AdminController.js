@@ -24,5 +24,17 @@ export default {
         Log.error("AdminService", error.message, error);
         return res.status(error.code).json(error);
       });
+  },
+
+  deleteCommentById: async (req, res, next) => {
+    let { commentId } = req.params;
+    adminService.deleteCommentById(commentId)
+    .then((result) => {
+      return res.status(200).json();
+    })
+    .catch(error => {
+      Log.error('AdminService', error.message, error);
+      return res.status(error.code).json(error);
+    })
   }
 };

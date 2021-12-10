@@ -1,3 +1,4 @@
+import { ServiceError } from "../utils/ServiceError";
 import User, { UserSchema } from "../models/User";
 import Comment from "../models/Comment";
 
@@ -40,13 +41,13 @@ export default {
     );
   },
 
-  deleteComment: async () => {
-    return Comment.findOne({_id: fileId})
+  deleteCommentById: async (commentId) => {
+    return Comment.findOne({_id: commentId})
             .then(async (comment) => {
                 if(!comment)
                     return Promise.reject(new ServiceError(400, "Comment not existed!"));
-                const dele = await Comment.deleteOne({_id: fileId});
-                return Promise.resolve(file.link.split("=")[1]);
+                const dele = await Comment.deleteOne({_id: commentId});
+                //return Promise.resolve(file.link.split("=")[1]);
             }, async (error) => {
                 return Promise.reject(new ServiceError(500, error.message, error));
             });
