@@ -7,14 +7,14 @@ import Login from "./pages/login";
 
 function App() {
   return (<Router>
-    <div className="App">
+    <div>
       <nav className="navbar navbar-expand-lg navbar-light fixed-top">
         <div className="container">
-          <Link className="navbar-brand" to={"/sign-in"}>Admin</Link>
+          <Link className="navbar-brand" to={"/home"}>Admin</Link>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link className="nav-link" to={"/sign-in"}>Login</Link>
+                <Link className="nav-link" to={"/"}>Login</Link>
               </li>
             </ul>
           </div>

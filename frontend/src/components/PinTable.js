@@ -6,7 +6,6 @@ const PinTable = () => {
     let [videoOfDatabase, setVideoOfDatabase] = useState([]);
     let photoOfDatabase = [];
 
-
     useEffect(() => {
         fileService.getAllFile()
         .then((res) => {
@@ -31,6 +30,17 @@ const PinTable = () => {
         });
        }, []);
 
+    const HandleFileDelete = (file) => {
+        var newPins = [...pins];
+        var index = newPins.indexOf(file);
+        newPins.splice(index, 1);
+        setPins(newPins);
+        // api ở đây comment lại để tránh hậu quả đáng tiếc =>
+        // fileService.deleteFileById(file._id)
+        // .then(res => console.log(res))
+        // .catch(err => console.log(err));
+    }
+
     return (
         <table>
             <tr>
@@ -47,7 +57,7 @@ const PinTable = () => {
                         </td>
                         <td>{pin.status}</td>
                         <td>
-                            <button>Xóa</button>
+                            <button onClick={() => HandleFileDelete(pin)}>Xóa</button>
                         </td>
                     </tr>
                 )
@@ -71,7 +81,7 @@ const PinTable = () => {
                         </td>
                         <td>{pin.status}</td>
                         <td>
-                            <button>Xóa</button>
+                            <button onClick={() => HandleFileDelete(pin)}>Xóa</button>
                         </td>
                     </tr>
                 )

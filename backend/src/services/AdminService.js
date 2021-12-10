@@ -14,6 +14,18 @@ export default {
       }
     );
   },
+
+  deleteUser: async () => {
+    return User.findOne({_id: fileId})
+            .then(async (user) => {
+                if(!user)
+                    return Promise.reject(new ServiceError(400, "User not existed!"));
+                const dele = await User.deleteOne({_id: fileId});
+                return Promise.resolve(file.link.split("=")[1]);
+            }, async (error) => {
+                return Promise.reject(new ServiceError(500, error.message, error));
+            });
+  },
   
   getAllComment: async () => {
     return Comment.find().then(
@@ -27,4 +39,16 @@ export default {
       }
     );
   },
+
+  deleteComment: async () => {
+    return Comment.findOne({_id: fileId})
+            .then(async (comment) => {
+                if(!comment)
+                    return Promise.reject(new ServiceError(400, "Comment not existed!"));
+                const dele = await Comment.deleteOne({_id: fileId});
+                return Promise.resolve(file.link.split("=")[1]);
+            }, async (error) => {
+                return Promise.reject(new ServiceError(500, error.message, error));
+            });
+  }
 };
