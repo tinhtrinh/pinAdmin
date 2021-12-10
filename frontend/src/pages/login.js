@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from 'react-router';
 import { useForm } from "react-hook-form";
@@ -9,8 +9,14 @@ const LogIn = () => {
     const history=useHistory();
     const { register, handleSubmit } = useForm();
     const [errMessage, setErrMessage] = React.useState('');
+    const [submitBtn, setBtn] = useState();
+
+    useEffect(() => {
+        setBtn(document.getElementById("subtn"))
+      }, []);
 
     const onSubmit = async (data) => {
+        submitBtn.classList.add("disabled");
         await authService
         .login(data)
         .then((res) => {
@@ -45,7 +51,7 @@ const LogIn = () => {
                 </div>
             </div>
 
-            <button type="submit" className="btn btn-primary btn-block" onClick={handleSubmit(onSubmit)}>Submit</button>
+            <button id="subtn" type="submit" className="btn btn-primary btn-block" onClick={handleSubmit(onSubmit)}>Submit</button>
             <p className="forgot-password text-right">
                 Forgot <a href="#">password?</a>
             </p>
