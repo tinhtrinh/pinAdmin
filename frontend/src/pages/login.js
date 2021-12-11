@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
 import { useHistory } from 'react-router';
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
 import { authService } from "../services/auth.service";
 
 const LogIn = () => {
-    const history=useHistory();
+    const history = useHistory();
+    const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
     const [errMessage, setErrMessage] = React.useState('');
     const [submitBtn, setBtn] = useState();
@@ -20,7 +21,8 @@ const LogIn = () => {
         .login(data)
         .then((res) => {
             console.log(res)
-            history.push('/home');
+            dispatch({ type: 'LOGIN' })
+            history.push('/');
         })
         .catch((err) => {
           setErrMessage(err.message);
@@ -29,11 +31,6 @@ const LogIn = () => {
     
     return (
         <>
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-            <div className="container">
-            <Link to={"/home"} className="navbar-brand">Admin</Link>
-            </div>
-        </nav>
         <div className="auth-inner">
             <form>
                 <h3>Sign In</h3>

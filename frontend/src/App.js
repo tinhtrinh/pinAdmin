@@ -5,17 +5,18 @@ import './App.css';
 import Home from "./pages/home";
 import Login from "./pages/login";
 
-function App() {
-  return (<Router>
+function App() {  
+  return (
+    <Router>
     <div className="App">
       <div>
           <Switch>
-            <Route exact path='/' component={Login} />
-            <Route path="/sign-in" component={Login} />
-            <Route path="/home" component={Home} />
+            <Route exact path='/' component={Home} />
+            <Route path="/log-in" component={Login} />
           </Switch>
       </div>
-    </div></Router>
+    </div>
+    </Router>
   );
 }
 

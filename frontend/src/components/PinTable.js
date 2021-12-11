@@ -37,10 +37,9 @@ const PinTable = () => {
         var index = newPins.indexOf(file);
         newPins.splice(index, 1);
         setPins(newPins);
-        // api ở đây comment lại để tránh hậu quả đáng tiếc =>
-        // fileService.deleteFileById(file._id)
-        // .then(res => console.log(res))
-        // .catch(err => console.log(err));
+        fileService.deleteFileById(file._id)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
     }
 
     return (
@@ -58,7 +57,7 @@ const PinTable = () => {
                 return (
                     <tr key={index}>
                         <td>
-                            <img src={pin.link} style={{width: 100}}/>
+                            <img alt="img" src={pin.link} style={{width: 100}}/>
                         </td>
                         <td>{pin.status}</td>
                         <td>

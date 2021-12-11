@@ -42,11 +42,11 @@ const UserTable = () => {
                  return (
                      <tr key={index}>
                          <td>
-                            <img src={user.profilePhoto} style={{width: 100}}/>
+                            <img alt="avatar" src={user.profilePhoto} style={{width: 100}}/>
                          </td>
                          <td>{user.email}</td>
                          <td>
-                             <button type="button" class="btn btn-danger" onClick={() => HandleUserDelete(user)}>Xóa</button>
+                             <button type="button" className="btn btn-danger" onClick={() => HandleUserDelete(user)}>Xóa</button>
                          </td>
                     </tr>
                   )
