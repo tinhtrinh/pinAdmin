@@ -36,11 +36,15 @@ const Home = () => {
                     </Nav>
                 </Container>
             </Navbar>
-               
+            <div style={{padding: "0 20%", marginBottom: '50px'}} class="input-group">
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                aria-describedby="search-addon" />
+                <button type="button" class="btn btn-outline-light">search</button>
+            </div>
             {isPinTableOpen ? <PinTable/> : ""}
             {isUserTableOpen ? <UserTable/> : ""}
             {isCommentTableOpen? <CommentTable/>: ""}
-            <h2 style={{color: "white", marginTop: '150px'}}>Vui lòng chọn tính năng!</h2>
+            <h2 style={{color: "white", marginTop: '150px'}}>Vui lòng chọn bảng !</h2>
         </div>
     );
 }

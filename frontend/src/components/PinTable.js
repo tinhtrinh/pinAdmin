@@ -43,7 +43,7 @@ const PinTable = () => {
 
     return (
         <div style={{display:"flex", justifyContent: "center"}}>
-        <Table style={{width: '80%'}}  striped bordered hover variant="dark">
+        <Table style={{width: '60%'}}  striped bordered hover variant="dark">
             <thead>
                 <tr>
                 <th>Ảnh</th>
